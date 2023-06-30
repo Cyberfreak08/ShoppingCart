@@ -45,9 +45,17 @@ const cartSlice = createSlice({
         placement:'bottomRight'
       });
     },
+    emptyCart: (state) => {
+      state.items = [];
+      notification.success({
+        message: 'Removed all items from cart',
+        description: 'All the items added to the cart has been removed.',
+        placement:'bottomRight'
+      });
+    }
   },
 });
 
-export const { addToCart, updateQuantity, removeFromCart } = cartSlice.actions;
+export const { addToCart, updateQuantity, removeFromCart, emptyCart } = cartSlice.actions;
 export const cartSelector = (state) => state.reducer.cart.items;
 export const cartReducer = cartSlice.reducer;

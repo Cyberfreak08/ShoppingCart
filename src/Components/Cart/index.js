@@ -6,6 +6,7 @@ import {
   cartSelector,
   removeFromCart,
   updateQuantity,
+  emptyCart
 } from "../../Redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +24,9 @@ const Cart = () => {
   const handleRemoveItem = (itemId) => {
     dispatch(removeFromCart(itemId));
   };
+  const handleEmptyCart = () => {
+    dispatch(emptyCart());
+  }
 
   const calculateTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => {
@@ -103,6 +107,14 @@ const Cart = () => {
         style={{ position: "fixed", top: 16, right: 16 }}
       >
         Go Back
+      </Button>
+      <Button
+        onClick={handleEmptyCart}
+        type="primary"
+        size="large"
+        style={{ position: "fixed", top: 64, right: 16 }}
+      >
+        Empty cart
       </Button>
     </div>
   );
